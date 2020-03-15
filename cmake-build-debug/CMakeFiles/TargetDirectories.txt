@@ -1,0 +1,3 @@
+/cygdrive/c/Users/Personal/Desktop/Esteban/cpp-ci-pipeline1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Personal/Desktop/Esteban/cpp-ci-pipeline1/cmake-build-debug/CMakeFiles/cpp_ci_pipeline1.dir
+/cygdrive/c/Users/Personal/Desktop/Esteban/cpp-ci-pipeline1/cmake-build-debug/CMakeFiles/edit_cache.dir

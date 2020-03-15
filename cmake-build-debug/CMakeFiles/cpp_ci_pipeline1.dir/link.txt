@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/cpp_ci_pipeline1.dir/src/Calculadora.cpp.o CMakeFiles/cpp_ci_pipeline1.dir/tests/test.cpp.o  -o cpp_ci_pipeline1.exe -Wl,--out-implib,libcpp_ci_pipeline1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
