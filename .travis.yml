@@ -1,12 +1,32 @@
+dist: trusty
+sudo: false
 language: cpp
 
-script:
-  - cmake
-
 addons:
+  sonarcloud:
+    organization: "abcd12345"
+    token:
+      secure: "gD9LWeewIZO03GyXAUOfH8tPlpdicO9FHq2qrr4TS+wlCekt7md29mThwnBW4uWTwQK4oXbxWPo3KTduiDaj9PIOWCOwurdWV3oksiUi/Mad3I2SuYmHEMHgu7tuqd7Wcg/VNQrDt99CFfVIe84B+WBTZfb1noIGPaPANCNOX7qr6ZsosgGSBK81hP1RiM9/S7xBc36dDFtCJD3dFk1N7EPyaXKSK+dZo3/cDkQHzcrZB9sceXYSVfSMBsd33r1tHnsNFIUO1qhi8EgllFLMLbYWOPUdLuohw6CaNXDKawOCGM23HpgWVLAOwYtjzSmncYbFlj5WI9m7FBh2Z+4QmCpzyhJS9TU9ruvOAVqD9ow+VQ0jq9I4C7nSiB9jJ3QIhFpJD2rvRDQ4gSm5g5DbnfCWjslAhbZBnwwysMdbQhbwEwXRl5/CI5z3m9j1+/Bijx4pAYdozmuHBre0ZOdcAu4trytOmMyO3pDNRi+UEbPXJDlEgO0LdnNVV4Am2PBf0ZKmLrzrDWyK1QjK2uSH4iN3jhNoL8/MYg0WcbAM+yYCgFkmD43VU+ZjU/vQu0GjJhFwzhgj6NCIP3lwHiCwctg9hryac6dO/Vi86GITlSQW1rz/decP6acSpFu9xcvNTlrmbq7R6ldHQqQqo4wXiAp4uuMtD1u7CBaZDrZXTt4="
   apt:
     sources:
       - george-edison55-precise-backports
     packages:
       - cmake-data
       - cmake
+
+script:
+  # Prepare the build system
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cd ..
+  # Wraps the compilation with the Build Wrapper to generate configuration (used
+  # later by the SonarQube Scanner) into the "bw-output" folder
+  #- build-wrapper-linux-x86-64 --out-dir bw-output cmake --build build/
+  # And finally run the SonarQube analysis - read the "sonar-project.properties"
+  # file to see the specific configuration
+  #- sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
